@@ -65,12 +65,12 @@ ld -m elf_i386 program.o <all other external dependancies> -o program
 The `-m elf_i386` option dictates the target platform to link for will be a 32bit i386 binary (untested if `-m elf32_x86_64` is functional).
 As in all cases with linking, be sure to also specify all other external object files required for a successful link.
 
+### Typical Build Workflow
 To summarise the above, the majority of builds performed within each chapter was a one-liner of the form:
 ```bash
 as -32 -g program.s -o program.o && ld -m elf_i386 program.o -o program
 ```
 
-### Typical Build Workflow
 To ease the typing burden, liberal use of `bash`/`zsh` string substitution was used when "updating" the build process for a new file, e.g.:
 ```bash
 # Initial line builds the <first_program> binary
