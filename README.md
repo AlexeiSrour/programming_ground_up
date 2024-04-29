@@ -4,7 +4,7 @@ This repository is a collection of the various programming exercises found in Jo
 
 The repository's structure is unconventional, with each chapter's contents being isolated into an individual branch, with the Master/Main branch
 acting as a landing page whose only content is this README file. Branches each indivudally have their own specific READMEs, it is recommended to
-use GitHubs "Switch Branch" option to inspect each of the branches independantly for further information.
+use GitHubs "Switch Branch" option to inspect each of the branches independently for further information.
 
 As per the book, all code is written for the **GNU Assembler** `as` in AT&T syntax, and linked with the **GNU Linker** `ld`. The assembly is written
 with x86_32 bit architectures in mind running Linux - again, as per the book - however all executables were built and verified with x86_64 bit architecture.
