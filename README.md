@@ -63,7 +63,7 @@ programmers simply do not see by design. Should you be interested in having a qu
 through some of the pages. The sheer volume of the number of pages alone should hint had just how much heavy lifting the hardware is doing just to enable
 an operating system to run.
 
-In summation, there exists special purpose hardware to make system calls possible.
+As far as we should be concerned, system calls fall under the umbrella of OS functionality that is enable directly by the hardware.
 
 On a 32 bit Linux Kernal, system calls are implemented via an interupt routine. During the boot process of many classes of chips, ranging from embedded
 to super computers, a region of memory is dedicated specifically as a series of function pointers for handling various cases of interrupts. This region
@@ -72,4 +72,25 @@ interrupts. Each interrupt has an integer ID associated with it, and indexing in
 specific interrupt wil be handled.
 
 Writing a well behaving Interrupt Service Routine (ISR) is a science in and of itself, but for now it suffices to say that the handler for interrupt id
-0x80 is the one associated 
+0x80 is the one associated to system calls. Hence, as per the 32 bit system call calling convention, we load the relevant registers with the data we need
+before invoking `int 0x80` in assembly. After some indeterminite time, the interupt handler returns execution back to our program and we continue on our
+merry way.
+
+*An operating system will often take the opportunity to do some other bookkeeping tasks in the background during the system call. For example, the scheduler
+may opt to do a context switch during a system call.*
+
+Come the 64 bit era, we now have a dedicated assembly instruction for system calls, `syscall`. Where the earlier interrupt model leveraged the interrupt/
+trap functionality provided by the chip, the dedicated instructions exists specifically to avoid much of the overhead and unnecessary checks that come with
+interrupt handling in the specific context of system calls. This enables faster, less expensive switches into the kernal.
+
+(*I am also tangentially aware of sysenter. I cannot really comment on these instructions as of now*)
+
+Why have I included this diatribe here? Beyond being interesting, the majority of what follows in the text will involve some level of system calls.
+Having some level of understanding as to *what* a system call is will go a long way understanding why a lot of programming works the way it does, and why
+we do some things the way we do. Later exercises in the book will help illuminate some of these points, but for now, suffice it to say, computers are
+wickedly complicated.
+
+#### References
+Some other references for things I'm less confident on (i.e. `sysenter`/`sysexit` on 32 bit architectures_:
+[OpenCSF article on system calls in a 64 bit environment](https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/Syscall.html#:~:text=The%20syscall%20instruction%20is%20the,to%20return%20from%20the%20interrupt.)
+[Stack Exchange thread discussing some extra deatils](https://stackoverflow.com/questions/15598700/syscall-or-sysenter-on-32-bits-linux#:~:text=Well%2C%20according%20to%20%E2%80%9CSystem%20Calls,the%20overhead%20of%20changing%20mode.)
