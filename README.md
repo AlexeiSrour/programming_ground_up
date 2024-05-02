@@ -41,14 +41,16 @@ echo $?
 ## Summary
 ### Summary of the contents up to this point
 The key takeaway from the books that this particular exercise is concerned with are:
-    * the registers
-    * instructions
-    * labels and symbols
+
+    - the registers
+    - instructions
+    - labels and symbols
 
 #### Registers
 Our general purpose registers are:
-    * eax, ebx, ecx, edx
-    * edi, esi
+
+    - eax, ebx, ecx, edx
+    - edi, esi
 
 Though these registers are spoken of as "general purpose", it is not unusual for some assembler instructions to make special use of these registers.
 Reasons for this are largely historic - in fact, the names of the registers themselves have a bit of a history to them. They were once called A, B,
@@ -56,8 +58,8 @@ C, D, and many assigned certain mnemonics matching their name to indicate usage,
 some rather strange instructions (like string instructions) make use of these registers in some rather unconventional ways (e.g. keeping the length of
 counted string in the C register).
 
-As the bit width of processors grew, we had the e*X*tended registers, AX, BX, CX, and DX, where one could further select the High or Low byte, AH, AL,
-BH, BL, CH, CL, DH, DL. Technology marches ever forwards, our bit width doubles, and now we create our double *E*xtended registers, EAX, EBX, ECX, EDX.
+As the bit width of processors grew, we had the e**X**tended registers, AX, BX, CX, and DX, where one could further select the High or Low byte, AH, AL,
+BH, BL, CH, CL, DH, DL. Technology marches ever forwards, our bit width doubles, and now we create our double **E**xtended registers, EAX, EBX, ECX, EDX.
 I'm unaware if it's possible to select the upper 2 bytes of the register, not sure why one would be so inclined to do so anyway.
 
 Finally, we jump to the modern day, where AMD extended not only the bit width, but also extended the register set. For our old friends, they go by the name
@@ -66,8 +68,9 @@ As with out older registers, these new registers can also access their lower hal
 is outside the scope of the book.
 
 Our special purpose registers are:
-    * ebp, esp
-    * eip, eflags
+    
+    - ebp, esp
+    - eip, eflags
 
 These are special purpose as many assembly instructions have some level of automatic influence upon these and may automatically set them for us. Registers
 like EIP and EFLAGS are in fact protected, and cannot be accessed via normal assembly instructions. These registers have specific uses in the context
@@ -85,9 +88,10 @@ We are introduced to a suit of assembler directives which will only expand with 
 forms not listed here.
 
 Some of the more relevant directives used here were:
-    * .section .text, .section .data, .section .bss (*not yet seen)
-    * .globl <symbol name>
-    * <label>:
+    
+    - .section .text, .section .data, .section .bss (*not yet seen*)
+    - .globl <symbol name>
+    - <label>:
 
 Our section data just outlines to our linker, the program responsible for creating the executable, what pieces of our program lie where. This information is
 packed into an executable that the operating system then refers to when it first boots up our process.
