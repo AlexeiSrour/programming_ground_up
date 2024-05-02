@@ -1,6 +1,3 @@
-WIP, to add chapter summary, binary summary, and build instructions
-
-
 # Chapter 3. Your First Programs (Part 1)
 ## Overview
 This directory is reserved for the introductory first assembly programs introduced in the text.
@@ -44,14 +41,14 @@ echo $?
 ## Summary
 ### Summary of the contents up to this point
 The key takeaway from the books that this particular exercise is concerned with are:
-    - The registers
-    - instructions
-    - labels and symbols
+    * the registers
+    * instructions
+    * labels and symbols
 
 #### Registers
 Our general purpose registers are:
-    - eax, ebx, ecx, edx
-    - edi, esi
+    * eax, ebx, ecx, edx
+    * edi, esi
 
 Though these registers are spoken of as "general purpose", it is not unusual for some assembler instructions to make special use of these registers.
 Reasons for this are largely historic - in fact, the names of the registers themselves have a bit of a history to them. They were once called A, B,
@@ -69,8 +66,8 @@ As with out older registers, these new registers can also access their lower hal
 is outside the scope of the book.
 
 Our special purpose registers are:
-    - ebp, esp
-    - eip, eflags
+    * ebp, esp
+    * eip, eflags
 
 These are special purpose as many assembly instructions have some level of automatic influence upon these and may automatically set them for us. Registers
 like EIP and EFLAGS are in fact protected, and cannot be accessed via normal assembly instructions. These registers have specific uses in the context
@@ -88,9 +85,9 @@ We are introduced to a suit of assembler directives which will only expand with 
 forms not listed here.
 
 Some of the more relevant directives used here were:
-    - .section .text, .section .data, .section .bss (*not yet seen)
-    - .globl <symbol name>
-    - <label>:
+    * .section .text, .section .data, .section .bss (*not yet seen)
+    * .globl <symbol name>
+    * <label>:
 
 Our section data just outlines to our linker, the program responsible for creating the executable, what pieces of our program lie where. This information is
 packed into an executable that the operating system then refers to when it first boots up our process.
